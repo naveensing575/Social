@@ -1,14 +1,16 @@
 import express from "express";
 import mongoose from "mongoose";
+import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import multer from "multer";
 import helmet from "helmet";
 import path from "path";
-import authRoutes from './'
+import userRoutes from './routes/users.js';
+import authRoutes from './routes/auth.js';
 import { fileURLToPath } from "url";
-import { register } from "./controllers/auth";
+import { register } from "./controllers/auth.js";
 
 /* Configurations */
 
@@ -39,10 +41,10 @@ const upload = multer({ storage: storage });
 
 /* Routes with Files */
 app.post("/auth/register", upload.single("picture"), register);
-app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* Routes */
 app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
 
 /*mongoose setup*/
 
