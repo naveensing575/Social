@@ -9,8 +9,14 @@ import helmet from "helmet";
 import path from "path";
 import userRoutes from './routes/users.js';
 import authRoutes from './routes/auth.js';
+import postRoutes from './routes/posts.js';
+import { createPost } from "./controllers/posts.js";
 import { fileURLToPath } from "url";
 import { register } from "./controllers/auth.js";
+import { verifyToken } from "./middleware/auth.js";
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import { users, posts } from "./data/index.js";
 
 /* Configurations */
 
@@ -41,10 +47,12 @@ const upload = multer({ storage: storage });
 
 /* Routes with Files */
 app.post("/auth/register", upload.single("picture"), register);
+app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* Routes */
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
 
 /*mongoose setup*/
 
@@ -56,5 +64,9 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+
+    /* Add Data one time */
+    // User.insertMany(users);
+    // Post.insertMany(posts);
   })
   .catch((error) => console.log(`${error} did not connect`));
