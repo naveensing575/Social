@@ -1,9 +1,11 @@
+import { Box } from '@mui/material'
 import React from 'react'
+import Navbar from '../navbar'
 
 export default function index() {
   return (
-    <h1>
-      Home Page
-    </h1>
+    <Box>
+      <Navbar/>
+    </Box>
   )
 }
