@@ -12,7 +12,7 @@ Social is a dynamic social networking platform designed to connect people, facil
 
 ## Getting Started
 
-To get started with Social, simply clone this repository and install dependencies of both folders with the env for the server(PORT, mongo_URL, JWT_SECRET).
+To get started with Social, simply clone this repository and install dependencies of both folders and set up the env variables for the server(PORT, mongo_URL, JWT_SECRET).
 
 ## Contributing
 
