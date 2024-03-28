@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { setLogin } from "../../state/index";
 import Dropzone from "react-dropzone";
 import FlexBetween from "../../components/FlexBetween";
-import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -197,7 +197,7 @@ const Form = () => {
                         <input {...getInputProps()} />
                     {!values.picture ? (
                         <Box display="flex" alignItems="center">
-                          <CameraAltIcon sx={{ marginRight: '0.5rem' }} />
+                          <AddAPhotoIcon sx={{ marginRight: '0.5rem' }} />
                           <Typography>Add Picture Here</Typography>
                         </Box>) : (
                           <FlexBetween>
@@ -260,7 +260,7 @@ const Form = () => {
                 color: palette.primary.main,
                 "&:hover": {
                   cursor: "pointer",
-                  color: palette.primary.light,
+                  color: palette.primary.dark,
                 },
               }}
             >
